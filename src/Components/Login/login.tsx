@@ -3,11 +3,15 @@ import axios from 'axios';
 import"./login.css"
 import { useNavigate } from 'react-router-dom';
 import Register from '../Register/register';
-import Dashboard from '../Dashboard/dashboard';
-
-
-const Login: React.FC <any> = () => {
  
+ 
+const Login: React.FC <any> = () => {
+  const user ={
+ 
+    id:0,
+    username:"",
+    password:""
+  }
  
   const [username, setUsername] = useState("");
   const[password, setPassword] = useState("");
@@ -16,7 +20,40 @@ const Login: React.FC <any> = () => {
  
   const navigate = useNavigate();
  
-  
+  const gatherInput = (input:any) => {
+    if(input.target.name === "username"){
+        setUsername(input.target.value)
+    } else {
+        setPassword(input.target.value)
+    }
+  }
+ 
+  const login = async () => {
+ 
+    try {
+      const response = await axios.post("http://localhost:5000/auth", {username, password});
+      if(response.status === 202) {
+        console.log(response);
+ 
+        user.id = response.data.id;
+        user.username = response.data.username;
+        user.password = response.data.password;
+ 
+        if(user.id > 0){
+ 
+          navigate("/dashboard")
+        }
+      }
+    }   catch (error) {
+ 
+      if(error instanceof Error){
+         const err = error as Error;
+         setError("Your username or password is wrong ! please try again");
+      }
+ 
+    }
+  }
+ 
  
 return (
     <div className="login">
@@ -54,13 +91,7 @@ return (
        
         </div>
   )
-
+ 
 }
 export default Login
-
-
-
-
-
-
-
+ 

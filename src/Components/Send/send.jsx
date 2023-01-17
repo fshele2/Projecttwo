@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export const Send = () => {
   const [senderBalance, setSenderBalance] = useState(1000);
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,9 +49,16 @@ export const Send = () => {
         <br />
         <button type="submit">Send</button>
       </form>
+
       <h3>Available balance: {senderBalance}</h3>
+      
+      
+      <button onClick={() => navigate('/dashboard')}>Home</button>
+      
     </div>
+    
   );
+
 };
 
 export default Send

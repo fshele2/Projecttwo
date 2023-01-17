@@ -2,11 +2,15 @@ import React from 'react'
 import"./account.css"
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export const Account = () => {
   const [accounts, setAccounts] = useState([]);
   const [error, setError] = useState('');
   const [selectedAccountType, setSelectedAccountType] = useState('all');
+
+   
+  const navigate = useNavigate();
 
   useEffect(() => {
       let endpoint = 'http://localhost:3000/accounts';
@@ -58,7 +62,11 @@ export const Account = () => {
                   <p>No accounts found.</p>
               )}
           </div>
+          
+          
+          <button onClick={() => navigate('/dashboard')}>Home</button>
       </>
+      
   )
 }
 export default Account

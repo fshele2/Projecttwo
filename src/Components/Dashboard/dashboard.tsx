@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
       <div className='depo'>
             <button className='send' onClick={() => navigate('/Send')}>Send Money</button>
     </div>   
-            <button className='logout-button'>LoguOut</button>     
+            
 
     </div>
 

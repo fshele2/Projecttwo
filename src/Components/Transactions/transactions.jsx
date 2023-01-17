@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [income, setIncome] = useState(0);
   const [expenses, setExpenses] = useState(0);
   const [newTransaction, setNewTransaction] = useState({ type: '', amount: '' });
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,8 +62,12 @@ export const Transactions = () => {
           <p>Type: {transaction.type}</p>
           <p>Amount: {transaction.amount}</p>
         </div>
+        
       ))}
+      
+      <button onClick={() => navigate('/dashboard')}>Home</button>
     </div>
+    
   );
 };
 

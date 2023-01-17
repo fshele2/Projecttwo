@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
  const Withdraw = (e) => {
     const [acId, setAcId] = useState('');
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,6 +62,8 @@ import { useState } from 'react';
                 {error && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}
             </div>
+
+            <button onClick={() => navigate('/dashboard')}>Home</button>
         </>
     )
 }

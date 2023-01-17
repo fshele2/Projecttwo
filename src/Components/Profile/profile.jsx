@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
  const Profile = () => {
 
@@ -12,6 +13,8 @@ import { useState } from 'react';
   });
   const [editing, setEditing] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
+
+  const navigate = useNavigate();
  
   const handleChange = (e) => {
     
@@ -97,9 +100,11 @@ import { useState } from 'react';
         </div>
         <button type="submit">Save Changes</button>
       </form>
+      <button onClick={() => navigate('/dashboard')}>Home</button>
     </div>
     
   )
+  
 }
 
 export default Profile

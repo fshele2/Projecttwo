@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const Transfer = () => {
     const [fromAcId, setFromAcId] = useState('');
@@ -7,6 +8,8 @@ const Transfer = () => {
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -67,6 +70,8 @@ const Transfer = () => {
                 {error && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}
             </div>
+
+            <button onClick={() => navigate('/dashboard')}>Home</button>
         </>
     )
 }
