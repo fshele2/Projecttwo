@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom'
 
 
   const [user, setUser] = useState({
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    address: '123 Main St',
-    phone: '555-555-5555',
+    name: '',
+    email: '',
+    address: '',
+    phone: '',
   });
   const [editing, setEditing] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
